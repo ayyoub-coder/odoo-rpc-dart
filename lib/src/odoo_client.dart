@@ -243,11 +243,11 @@ class OdooClient {
         if (result['error']['code'] == 100) {
           // session expired
           _setSessionId('');
-          final err = result['error'].toString();
+          final err =json.encode(result['error']);
           throw OdooSessionExpiredException(err);
         } else {
           // Other error
-          final err = result['error'].toString();
+          final err =json.encode(result['error']);
           throw OdooException(err);
         }
       }
